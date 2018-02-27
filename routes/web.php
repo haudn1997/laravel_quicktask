@@ -11,6 +11,17 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/{lang?}', 'TasksController@index')->name('lang');
+
+Route::resource('/task','TasksController',['names'=>
+    [
+        'index' => 'index',
+        'store' => 'add-tasks',
+        'destroy' => 'del-task'
+    ]
+]);
